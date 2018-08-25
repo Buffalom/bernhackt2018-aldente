@@ -19,12 +19,15 @@
 </template>
 
 <script>
-
 export default {
   name: "map-component",
   data() {
     return {
       map: null,
+      center: {
+        lat: "46.94647",
+        lng: "7.44427"
+      },
       tileLayer: null,
       layers: [
         {
@@ -46,10 +49,11 @@ export default {
   mounted() {
     this.initMap();
     this.initLayers();
+    this.locateCenter();
   },
   methods: {
     initMap() {
-      this.map = L.map("map").setView([46.94331, 7.44235], 18);
+      this.map = L.map("map").setView([this.center.lat, this.center.lng], 18);
       this.tileLayer = L.tileLayer(
         "https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png",
         {
@@ -83,13 +87,24 @@ export default {
           feature.leafletObject.removeFrom(this.map);
         }
       });
+    },
+    locateCenter() {
+      if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.center.lat = position.coords.latitude;
+        this.center.lng = position.coords.longitude;
+        this.map.setView([this.center.lat, this.center.lng]);
+        console.log(position.coords);
+      });
+    }
     }
   }
 };
 </script>
 
 <style lang='scss' scoped>
-  .map, .col-md-9 {
-    height: 80vh;
-  }
+.map,
+.col-md-9 {
+  height: 80vh;
+}
 </style>
