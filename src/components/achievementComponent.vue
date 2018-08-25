@@ -2,7 +2,7 @@
     <div>
         <ul class="list-group m-1">
             <li @click="description =!description" class="list-group-item d-flex justify-content-between align-items-center">
-                <img src="" class="rounded float-left" alt="10X10">
+                <img src="../assets/img/100Badge.png" class="rounded float-left" alt="10X10">
                 Linie 10x10
                 <span class="badge badge-primary badge-pill">100</span>
             </li>
@@ -10,7 +10,7 @@
                 Fahre 10 Stationen mit der Linie 10. <br>
             </div>
             <li @click="description1 =!description1" class="list-group-item d-flex justify-content-between align-items-center">
-                <img src="" class="rounded float-left" alt="10km">
+                <img src="../assets/img/500Badge.png" class="rounded float-left" alt="10km">
                 10km Fahren
                 <span class="badge badge-primary badge-pill">500</span>
             </li>
@@ -18,7 +18,7 @@
                 Fahre 10km im berner öV Netz. <br>
             </div>
             <li @click="description2 =!description2" class="list-group-item d-flex justify-content-between align-items-center">
-                <img src="" class="rounded float-left" alt="D.Tram">
+                <img src="../assets/img/1000Badge.png" class="rounded float-left" alt="D.Tram">
                 Dampftram Challenge
                 <span class="badge badge-primary badge-pill">1000</span>
             </li>
@@ -47,5 +47,8 @@ export default {
 </script>
 
 <style scoped>
-
+img {
+    width: 50px;
+    height: auto;
+}
 </style>
