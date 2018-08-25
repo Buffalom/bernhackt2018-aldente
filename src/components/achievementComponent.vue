@@ -1,8 +1,8 @@
 <template>
     <div>
-        <ul class="list-group m-1">
+        <!-- <ul class="list-group m-1">
             <li @click="description =!description" class="list-group-item d-flex justify-content-between align-items-center">
-                <img src="../assets/img/100Badge.png" class="rounded float-left" alt="10X10">
+                <img src="../assets/img/Badge.png" class="rounded float-left" alt="10X10">
                 Linie 10x10
                 <span class="badge badge-primary badge-pill">100</span>
             </li>
@@ -10,7 +10,7 @@
                 Fahre 10 Stationen mit der Linie 10. <br>
             </div>
             <li @click="description1 =!description1" class="list-group-item d-flex justify-content-between align-items-center">
-                <img src="../assets/img/500Badge.png" class="rounded float-left" alt="10km">
+                <img src="../assets/img/Badge.png" class="rounded float-left" alt="10km">
                 10km Fahren
                 <span class="badge badge-primary badge-pill">500</span>
             </li>
@@ -18,7 +18,7 @@
                 Fahre 10km im berner öV Netz. <br>
             </div>
             <li @click="description2 =!description2" class="list-group-item d-flex justify-content-between align-items-center">
-                <img src="../assets/img/1000Badge.png" class="rounded float-left" alt="D.Tram">
+                <img src="../assets/img/Badge.png" class="rounded float-left" alt="D.Tram">
                 Dampftram Challenge
                 <span class="badge badge-primary badge-pill">1000</span>
             </li>
@@ -29,26 +29,45 @@
                 <b>TOTAL</b>
                 <span class="badge badge-success badge-pill">1600</span>
             </li>
+        </ul> -->
+
+        <ul class="list-group m-1">
+            <div v-for="(item, index) in achievements" :key="item.index">
+                <li @click="description2 = index" class="list-group-item d-flex justify-content-between align-items-center">
+                <img src="../assets/img/Badge.png" class="rounded float-left" alt="10X10">
+                {{item.name}}
+                <span class="badge badge-primary badge-pill">{{ item.points }}</span>
+            </li>
+            <div v-show="description2 === index">
+                {{ item.description }}<br>
+            </div>
+            </div>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <b>TOTAL</b>
+                <span class="badge badge-success badge-pill">900</span>
+            </li>
         </ul>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'achievement-component',
-  data () {
+  name: "achievement-component",
+  data() {
     return {
-        description: false,
-        description1: false,
-        description2: false
-    }
+      description2: -1,
+      achievements: this.$store.getters.achievements
+    };
+  },
+  mounted() {
+    this.$store.dispatch("fetchAchievements");
   }
-}
+};
 </script>
 
 <style scoped>
 img {
-    width: 50px;
-    height: auto;
+  width: 50px;
+  height: auto;
 }
 </style>

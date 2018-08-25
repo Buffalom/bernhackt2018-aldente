@@ -19,7 +19,7 @@
       <!-- OPEN CHALLENGES -->
       <div class="card m-2" v-if="checkedBox1">
         <div class="card-body">
-          <h5 @click="description = !description" class="card-title">Ostkürvler Challenge</h5>
+          <h5 @click="description = !description" class="card-title">YB Challenge</h5>
           <p v-show="description" class="card-text">Fahre innerhalb von 7 Tagen 5 Mal mit dem YB-Tram. <br>
             (Tipp: benutze die Karte um das YB-Tram zu lokalisieren.) <br>
             <i>500 PUNKTE</i>
@@ -151,7 +151,7 @@ export default {
       description3: false,
       description4: false,
       checkedBox1: true,
-      ongoing: false,
+      ongoing: true,
       done: false
     }
   },
