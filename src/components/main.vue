@@ -13,7 +13,7 @@
         <map-component></map-component>
       </div>
       <div class="tab-pane fade" id="challenge" role="tabpanel" aria-labelledby="challenge-tab">
-        HERE COMES CHALLENGES COMPONENT
+        <challenge-component></challenge-component>
       </div>
     </div>
   </div>
@@ -21,6 +21,7 @@
 
 <script>
 import MapComponent from './mapComponent.vue'
+import ChallengeComponent from './challengeComponent.vue'
 
 export default {
   name: 'Main',
@@ -29,7 +30,8 @@ export default {
     }
   },
   components: {
-    MapComponent
+    MapComponent,
+    ChallengeComponent
   }
 }
 </script>

@@ -1,27 +1,42 @@
 <template>
     <div>
-        <l-map style="height: 90%" :zoom="zoom" :center="center">
-            <l-tile-layer :url="url"></l-tile-layer>
+        <l-map class="leaflet-container" :zoom='zoom' style="height: 90%" :center='center'>
+            <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
         </l-map>
     </div>
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet'
+import { LMap, LTileLayer } from 'vue2-leaflet'
 
 export default {
   name: 'map-component',
-  components: { LMap, LTileLayer, LMarker },
+  components: { LMap, LTileLayer },
   data () {
     return {
-      zoom:15,
-      center: L.latLng(47.413220, -1.219482),
-      url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+        zoom: 15,
+        center: {
+        lat: '46.81',
+        lng: '8.23',
+      },
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    }
+  },
+  beforeCreate() {
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(position => {
+        this.isLoading = false
+        this.position = position.coords;
+        this.center.lat = position.coords.latitude
+        this.center.lng = position.coords.longitude
+        console.log(position.coords)
+      })
     }
   }
 }
 </script>
 
 <style lang='scss' scoped>
-@import "../../node_modules/leaflet/dist/leaflet.css";
+    @import "../../node_modules/leaflet/dist/leaflet.css";
 </style>
