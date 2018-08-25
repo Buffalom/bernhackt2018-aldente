@@ -40,7 +40,6 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch('fetchStops')
     this.initMap();
     this.locateCenter();
   },

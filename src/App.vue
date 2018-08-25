@@ -15,7 +15,11 @@ export default {
   components: {
       HeaderComponent,
       FooterComponent
-    }
+  },
+  mounted() {
+    this.$store.dispatch('fetchStops');
+    this.$store.dispatch("fetchAchievements");
+  }
 }
 </script>
 

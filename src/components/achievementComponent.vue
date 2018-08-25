@@ -58,9 +58,6 @@ export default {
       description2: -1,
       achievements: this.$store.getters.achievements
     };
-  },
-  mounted() {
-    this.$store.dispatch("fetchAchievements");
   }
 };
 </script>
