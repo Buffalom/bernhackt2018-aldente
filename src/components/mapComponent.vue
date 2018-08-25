@@ -31,21 +31,14 @@ export default {
           id: 0,
           name: "Haltestellen",
           active: false,
-          features: [
-            {
-              id: 0,
-              name: "Bern Bahnhof",
-              type: "marker",
-              coords: [46.94766944444444, 7.440326111111111]
-            }
-          ]
+          features: this.$store.getters.stops
         }
       ]
     };
   },
   mounted() {
+    this.$store.dispatch('fetchStops') 
     this.initMap();
-    this.initLayers();
   },
   methods: {
     initMap() {
@@ -59,20 +52,6 @@ export default {
         }
       );
       this.tileLayer.addTo(this.map);
-    },
-    initLayers() {
-      let markerFeatures;
-      this.layers.forEach(layer => {
-        markerFeatures = layer.features.filter(
-          feature => feature.type === "marker"
-        );
-      });
-      console.log(markerFeatures);
-      markerFeatures.forEach(feature => {
-        feature.leafletObject = L.marker(feature.coords).bindPopup(
-          feature.name
-        );
-      });
     },
     layerChanged(layerId, active) {
       const layer = this.layers.find(layer => layer.id === layerId);
