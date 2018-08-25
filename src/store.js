@@ -35,6 +35,7 @@ export default new Vuex.Store({
     fetchVehicles (context, options) {
       axios.get(`http://localhost:3000/vehicles?lat=${options.lat}&lon=${options.lon}&rad=${options.rad}`)
         .then(response => {
+          let sum = 0
           response.data.vehicles.forEach(vehicle => {
             vehicle.type = 'marker'
             let vehicleIcon = L.icon({
@@ -44,7 +45,9 @@ export default new Vuex.Store({
             })
             vehicle.leafletObject = L.marker([ vehicle.latitude, vehicle.longitude ], { icon: vehicleIcon })
             context.commit('addVehicle', vehicle)
+            sum += vehicle.latitude + vehicle.longitude
           })
+          console.log('VEHICLE POSITION CHECKSUM:', Math.floor(sum))
         })
     },
     fetchAchievements (context) {
