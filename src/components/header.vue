@@ -14,6 +14,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Challenges</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Achievements</a>
+                </li>
             </ul>
         </div>
     </nav>
