@@ -31,18 +31,20 @@
             </li>
         </ul> -->
 
-        <ul class="list-group m-1" v-for="item in achievements" :key="item.index">
-            <li @click="description =!description" class="list-group-item d-flex justify-content-between align-items-center">
+        <ul class="list-group m-1">
+            <div v-for="(item, index) in achievements" :key="item.index">
+                <li @click="description2 = index" class="list-group-item d-flex justify-content-between align-items-center">
                 <img src="../assets/img/Badge.png" class="rounded float-left" alt="10X10">
                 {{item.name}}
-                <span class="badge badge-primary badge-pill">100</span>
+                <span class="badge badge-primary badge-pill">{{ item.points }}</span>
             </li>
-            <div v-show="description">
-                Fahre 10 Stationen mit der Linie 10. <br>
+            <div v-show="description2 === index">
+                {{ item.description }}<br>
+            </div>
             </div>
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <b>TOTAL</b>
-                <span class="badge badge-success badge-pill">1600</span>
+                <span class="badge badge-success badge-pill">900</span>
             </li>
         </ul>
     </div>
@@ -50,24 +52,22 @@
 
 <script>
 export default {
-  name: 'achievement-component',
-  data () {
+  name: "achievement-component",
+  data() {
     return {
-        description: false,
-        description1: false,
-        description2: false,
-        achievements: this.$store.getters.achievements
-    }
+      description2: -1,
+      achievements: this.$store.getters.achievements
+    };
   },
-  mounted () {
-      this.$store.dispatch('fetchAchievements')
+  mounted() {
+    this.$store.dispatch("fetchAchievements");
   }
-}
+};
 </script>
 
 <style scoped>
 img {
-    width: 50px;
-    height: auto;
+  width: 50px;
+  height: auto;
 }
 </style>
