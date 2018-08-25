@@ -32,7 +32,7 @@ export default {
       layers: [
         {
           id: 0,
-          name: "Haltestellen",
+          name: "Haltestellen (Bis 500 Meter)",
           active: false,
           features: this.$store.getters.stops
         }
