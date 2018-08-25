@@ -12,13 +12,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <router-link tag="li" to="/">
+                        <a class="nav-link">Home</a>
+                    </router-link>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Challenges</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Achievements</a>
+                    <router-link tag="li" to="/levels">
+                        <a class="nav-link">Achievements</a>
+                    </router-link>
                 </li>
             </ul>
         </div>

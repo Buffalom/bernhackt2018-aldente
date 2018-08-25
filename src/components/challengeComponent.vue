@@ -50,7 +50,7 @@
       <div class="card m-2" v-if="ongoing">
         <div class="card-body">
           <h5 @click="description3 = !description3" class="card-title">1 Mio Meter Challenge</h5>
-          <p v-show="description3" class="card-text">Fahre 1000km im Berner öV Netz. <br>
+          <p v-show="description3" class="card-text">Fahre 1000km im berner öV Netz. <br>
             <i>750 PUNKTE</i>
           </p>
           <div v-if="!startButton" class="progress">
@@ -91,7 +91,7 @@
           <p v-show="description4" class="card-text"><del>Fahre mindestens eine Stunde im Dampftram. </del><br>
             <del>(Tipp: benutze die Karte um das Dampftram zu lokalisieren.)</del>
           </p>
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#resultModal">Resultate</button>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#resultModal">Resultat</button>
         </div>
       </div>
 
@@ -112,7 +112,7 @@
               <table class="table">
                 <tr>
                   <th scope="col">Datum</th>
-                  <td>26. August 2018</td>
+                  <td>25. August 2018</td>
                 </tr>
                 <tr>
                   <th scope="col">Station Start</th>
