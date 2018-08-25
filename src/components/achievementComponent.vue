@@ -44,7 +44,7 @@
             </div>
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <b>TOTAL</b>
-                <span class="badge badge-success badge-pill">900</span>
+                <span class="badge badge-success badge-pill">{{ totalPoints }}</span>
             </li>
         </ul>
     </div>
@@ -58,6 +58,11 @@ export default {
       description2: -1,
       achievements: this.$store.getters.achievements
     };
+  },
+  computed: {
+      totalPoints: function () {
+        return this.achievements.reduce((total, achievement) => total + achievement.points, 0)
+      }
   }
 };
 </script>
