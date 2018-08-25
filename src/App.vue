@@ -1,18 +1,21 @@
 <template>
   <div id="app">
-    <header-component></header-component>
-    <router-view/>
-    <footer-component></footer-component>
+    <header-component/>
+    <router-view></router-view>
+    <footer-component/>
   </div>
 </template>
 
-
 <script>
-import Header from './components/header.vue'
-import Footer from './components/footer.vue'
+import HeaderComponent from './components/header.vue'
+import FooterComponent from './components/footer.vue'
 
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+      HeaderComponent,
+      FooterComponent
+    }
 }
 </script>
 
@@ -24,5 +27,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
 }
 </style>
