@@ -44,4 +44,6 @@ html, body, #map {
     width: 100%;
     text-align: center;
 }
+
+@import "assets/style/main"
 </style>

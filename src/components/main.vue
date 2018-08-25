@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <div class="main">
+    <ul class="nav nav-pills" id="myTab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="true">MAP</a>
       </li>
@@ -23,7 +23,7 @@
 import MapComponent from './mapComponent.vue'
 
 export default {
-  name: 'HelloWorld',
+  name: 'Main',
   data () {
     return {
     }
@@ -34,4 +34,19 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+@import "../assets/style/variables";
+
+.main{
+  margin-top: 0;
+} 
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: $primary;
+    border-radius: 0;
+}
+
+.nav-item {
+    flex: 1;
+}
+</style>
