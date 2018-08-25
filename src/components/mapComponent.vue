@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     initMap() {
-      this.map = L.map("map").setView([this.center.lat, this.center.lng], 18);
+      this.map = L.map("map").setView([this.center.lat, this.center.lng], 16);
       this.tileLayer = L.tileLayer(
         "https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png",
         {
@@ -73,6 +73,8 @@ export default {
         this.center.lng = position.coords.longitude;
         this.map.setView([this.center.lat, this.center.lng]);
         console.log(position.coords);
+        let yourPosMarker = L.circle([ position.coords.latitude, position.coords.longitude ], { radius: 20 }).bindPopup('Your position')
+        yourPosMarker.addTo(this.map);
       });
     }
     }
