@@ -2,10 +2,10 @@
   <div class="main">
     <ul class="nav nav-pills" id="myTab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="map-tab" data-toggle="tab" href="#mapContainer" role="tab" aria-controls="map" aria-selected="true">MAP</a>
+        <a class="nav-link active" id="map-tab" data-toggle="tab" href="#mapContainer" role="tab" aria-controls="map" aria-selected="true">KARTE</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="challenge-tab" data-toggle="tab" href="#challenge" role="tab" aria-controls="challenge" aria-selected="false">CHALLENGE</a>
+        <a class="nav-link" id="challenge-tab" data-toggle="tab" href="#challenge" role="tab" aria-controls="challenge" aria-selected="false">CHALLENGES</a>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">

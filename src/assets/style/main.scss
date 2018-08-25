@@ -26,3 +26,10 @@ a {
         color: $primary-darker;
     }
 }
+
+.btn {
+    border-radius: 0;
+    padding-left:2rem; 
+    padding-right:2rem; 
+    text-transform: uppercase;
+}
