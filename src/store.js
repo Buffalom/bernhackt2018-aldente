@@ -47,7 +47,7 @@ export default new Vuex.Store({
             context.commit('addVehicle', vehicle)
             sum += vehicle.latitude + vehicle.longitude
           })
-          console.log('VEHICLE POSITION CHECKSUM:', Math.floor(sum))
+          console.log('VEHICLE POSITION CHECKSUM:', sum)
         })
     },
     fetchAchievements (context) {
