@@ -1,26 +1,23 @@
 <template>
   <div>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <nav v-click-outside="collapseNav" class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
             <img src="../assets/img/bernmobil_logo.png">
         </a>
 
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button @click="showNav = !showNav" class="navbar-toggler ml-auto" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <router-link tag="li" to="/">
+                    <router-link @click.native="collapseNav" tag="li" to="/">
                         <a class="nav-link">Home</a>
                     </router-link>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">Challenges</a>
-                </li> -->
                 <li class="nav-item">
-                    <router-link tag="li" to="/levels">
+                    <router-link @click.native="collapseNav" tag="li" to="/levels">
                         <a class="nav-link">Achievements</a>
                     </router-link>
                 </li>
@@ -31,12 +28,28 @@
 </template>
 
 <script>
+import ClickOutside from 'vue-click-outside'
+
 export default {
-  name: 'header-component',
-  data () {
-    return {
+    name: 'header-component',
+    data () {
+        return {
+            showNav: false
+        }
+    },
+    methods: {
+        collapseNav () {
+            this.showNav = false
+        }
+    },
+    watch: {
+        showNav () {
+            $('#navbarSupportedContent').collapse(this.showNav ? 'show' : 'hide')
+        }
+    },
+    directives: {
+        ClickOutside
     }
-  }
 }
 </script>
 
