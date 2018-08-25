@@ -19,15 +19,16 @@ export default {
   mounted() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-          let options = {
-            lat: position.coords.latitude,
-            lon: position.coords.longitude,
-            rad: 0.5
-          }
-          this.$store.dispatch("fetchStops", options);
+        let options = {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+          rad: 0.5
+        }
+        this.$store.dispatch("fetchStops", options);
+        options.rad = 0.75
+        this.$store.dispatch("fetchVehicles", options);
       });
     }
-    this.$store.dispatch("fetchVehicles");
     this.$store.dispatch("fetchAchievements");
   }
 };

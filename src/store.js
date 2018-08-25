@@ -32,15 +32,15 @@ export default new Vuex.Store({
           })
         })
     },
-    fetchVehicles (context) {
-      axios.get(`http://localhost:3000/vehicles`)
+    fetchVehicles (context, options) {
+      axios.get(`http://localhost:3000/vehicles?lat=${options.lat}&lon=${options.lon}&rad=${options.rad}`)
         .then(response => {
           response.data.vehicles.forEach(vehicle => {
             vehicle.type = 'marker'
             let vehicleIcon = L.icon({
               iconUrl: 'https://www.shareicon.net/download/2016/06/11/586702_tram_512x512.png',
-              iconSize: L.point(50, 50),
-              iconAnchor: L.point(25, 25)
+              iconSize: L.point(30, 30),
+              iconAnchor: L.point(15, 15)
             })
             vehicle.leafletObject = L.marker([ vehicle.latitude, vehicle.longitude ], { icon: vehicleIcon })
             context.commit('addVehicle', vehicle)
