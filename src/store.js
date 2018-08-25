@@ -6,11 +6,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    stops: []
+    stops: [],
+    achievements: []
   },
   mutations: {
     addStop (state, stop) {
       state.stops.push(stop)
+    },
+    addAchievement (state, achievement) {
+      state.achievements.push(achievement)
     }
   },
   actions: {
@@ -19,16 +23,25 @@ export default new Vuex.Store({
         .then(response => {
           response.data.stops.forEach(stop => {
             stop.type = 'marker'
-            console.log([ stop.latitude, stop.longitude ])
             stop.leafletObject = L.marker([ stop.latitude, stop.longitude ]).bindPopup(
               stop.name
             )
             context.commit('addStop', stop)
           })
         })
+    },
+    fetchAchievements (context) {
+      axios.get('http://localhost:3000/challenges')
+        .then(response => {
+          response.data.challenges.forEach(achievement => {
+            console.log(response)
+            context.commit('addAchievement', achievement)
+          })
+        })
     }
   },
   getters: {
-    stops: state => state.stops
+    stops: state => state.stops,
+    achievements: state => state.achievements
   }
 })

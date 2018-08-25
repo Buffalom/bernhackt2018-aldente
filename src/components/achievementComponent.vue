@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ul class="list-group m-1">
+        <!-- <ul class="list-group m-1">
             <li @click="description =!description" class="list-group-item d-flex justify-content-between align-items-center">
                 <img src="../assets/img/Badge.png" class="rounded float-left" alt="10X10">
                 Linie 10x10
@@ -29,6 +29,21 @@
                 <b>TOTAL</b>
                 <span class="badge badge-success badge-pill">1600</span>
             </li>
+        </ul> -->
+
+        <ul class="list-group m-1" v-for="item in achievements" :key="item.index">
+            <li @click="description =!description" class="list-group-item d-flex justify-content-between align-items-center">
+                <img src="../assets/img/Badge.png" class="rounded float-left" alt="10X10">
+                {{item.name}}
+                <span class="badge badge-primary badge-pill">100</span>
+            </li>
+            <div v-show="description">
+                Fahre 10 Stationen mit der Linie 10. <br>
+            </div>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <b>TOTAL</b>
+                <span class="badge badge-success badge-pill">1600</span>
+            </li>
         </ul>
     </div>
 </template>
@@ -40,8 +55,12 @@ export default {
     return {
         description: false,
         description1: false,
-        description2: false
+        description2: false,
+        achievements: this.$store.getters.achievements
     }
+  },
+  mounted () {
+      this.$store.dispatch('fetchAchievements')
   }
 }
 </script>
