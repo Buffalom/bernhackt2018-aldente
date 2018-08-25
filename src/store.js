@@ -18,8 +18,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    fetchStops (context) {
-      axios.get('http://localhost:3000/stops')
+    fetchStops (context, options) {
+      console.log(options);
+      axios.get(`http://localhost:3000/stops?lat=${options.lat}&lon=${options.lon}&rad=${options.rad}`)
         .then(response => {
           response.data.stops.forEach(stop => {
             stop.type = 'marker'
