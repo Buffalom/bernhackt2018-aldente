@@ -1,0 +1,47 @@
+<template>
+  <div class="main">
+    <ul class="nav nav-pills" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="true">MAP</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="challenge-tab" data-toggle="tab" href="#challenge" role="tab" aria-controls="challenge" aria-selected="false">CHALLENGE</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="map" role="tabpanel" aria-labelledby="map-tab">
+        HERE COMES MAP-COMPONENT
+      </div>
+      <div class="tab-pane fade" id="challenge" role="tabpanel" aria-labelledby="challenge-tab">
+        HERE COMES CHALLENGE-COMPONENT
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Main',
+  data () {
+    return {
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../assets/style/variables";
+
+.main{
+  margin-top: 0;
+} 
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: $primary;
+    border-radius: 0;
+}
+
+.nav-item {
+    flex: 1;
+}
+</style>

@@ -1,0 +1,33 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css?family=Istok+Web:700');
+
+#app {
+    font-family: 'Istok Web', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: $text-dark;
+
+    margin-top: 54px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+a {
+    color: $primary;
+
+    &:hover {
+        color: $primary-darker;
+    }
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: $primary;
+    border-radius: 0;
+}
