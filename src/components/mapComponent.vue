@@ -1,42 +1,95 @@
 <template>
-    <div>
-        <l-map class="leaflet-container" :zoom='zoom' style="height: 90%" :center='center'>
-            <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-        </l-map>
-    </div>
+  <div class="row">
+      <div class="col-md-9">
+          <div id="map" class="map"></div>
+      </div>
+      <div class="col-md-3">
+          <div class="form-check" v-for="layer in layers" :key="layer.id">
+              <label class="form-check-label">
+                  <input class="form-check-input"
+                    type="checkbox"
+                    v-model="layer.active"
+                    @change="layerChanged(layer.id, layer.active)"
+                  />
+                  {{ layer.name }}
+                </label>
+          </div>
+      </div>
+  </div>
 </template>
 
 <script>
-import { LMap, LTileLayer } from 'vue2-leaflet'
 
 export default {
-  name: 'map-component',
-  components: { LMap, LTileLayer },
-  data () {
+  name: "map-component",
+  data() {
     return {
-        zoom: 15,
-        center: {
-        lat: '46.81',
-        lng: '8.23',
-      },
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-    }
+      map: null,
+      tileLayer: null,
+      layers: [
+        {
+          id: 0,
+          name: "Haltestellen",
+          active: false,
+          features: [
+            {
+              id: 0,
+              name: "Bern Bahnhof",
+              type: "marker",
+              coords: [46.94766944444444, 7.440326111111111]
+            }
+          ]
+        }
+      ]
+    };
   },
-  beforeCreate() {
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(position => {
-        this.isLoading = false
-        this.position = position.coords;
-        this.center.lat = position.coords.latitude
-        this.center.lng = position.coords.longitude
-        console.log(position.coords)
-      })
+  mounted() {
+    this.initMap();
+    this.initLayers();
+  },
+  methods: {
+    initMap() {
+      this.map = L.map("map").setView([46.94331, 7.44235], 18);
+      this.tileLayer = L.tileLayer(
+        "https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png",
+        {
+          maxZoom: 20,
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+        }
+      );
+      this.tileLayer.addTo(this.map);
+    },
+    initLayers() {
+      let markerFeatures;
+      this.layers.forEach(layer => {
+        markerFeatures = layer.features.filter(
+          feature => feature.type === "marker"
+        );
+      });
+      console.log(markerFeatures);
+      markerFeatures.forEach(feature => {
+        feature.leafletObject = L.marker(feature.coords).bindPopup(
+          feature.name
+        );
+      });
+    },
+    layerChanged(layerId, active) {
+      const layer = this.layers.find(layer => layer.id === layerId);
+      layer.features.forEach(feature => {
+        if (active) {
+          feature.leafletObject.addTo(this.map);
+        } else {
+          feature.leafletObject.removeFrom(this.map);
+        }
+      });
     }
   }
-}
+};
 </script>
 
 <style lang='scss' scoped>
-    @import "../../node_modules/leaflet/dist/leaflet.css";
+  .map, .col-md-9 {
+    height: 80vh;
+  }
 </style>
