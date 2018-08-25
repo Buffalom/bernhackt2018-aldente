@@ -1,6 +1,15 @@
-# hack-bern
+# BERNMOBIL-Challenge Team aldente! am BärnHäckt 2018
 
 > Mir bringä Bärn Mobil ufs nächschti Level
+
+> Geolocation-basierte Gamification der BERNMOBIL-Leitdaten
+
+
+## Projektinformationen
+
+Präsentation, Technische Dokumentation, Mockups und weitere Materialien sind unter `bernhackt_team_material` zu finden.
+
+In diesem Repo findet sich nur das Frontend der App. Das Backend ist in [seiner eigenen Repository](https://github.com/Andy-Bigler/bernhackt2018-aldente-backend).
 
 ## Build Setup
 
@@ -17,5 +26,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
