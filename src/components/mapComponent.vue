@@ -42,7 +42,6 @@ export default {
   mounted() {
     this.$store.dispatch('fetchStops') 
     this.initMap();
-    this.initLayers();
     this.locateCenter();
   },
   methods: {
