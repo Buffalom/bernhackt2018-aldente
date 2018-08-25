@@ -20,6 +20,14 @@ export default {
 </script>
 
 <style>
+body {
+    padding: 0;
+    margin: 0;
+}
+html, body, #map {
+    height: 100%;
+    width: 100vw;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

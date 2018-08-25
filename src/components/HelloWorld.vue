@@ -10,21 +10,26 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="map" role="tabpanel" aria-labelledby="map-tab">
-        HERE COMES MAP-COMPONENT
+        <map-component></map-component>
       </div>
       <div class="tab-pane fade" id="challenge" role="tabpanel" aria-labelledby="challenge-tab">
-        HERE COMES CHALLENGE-COMPONENT
+        HERE COMES CHALLENGES COMPONENT
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import MapComponent from './mapComponent.vue'
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
     }
+  },
+  components: {
+    MapComponent
   }
 }
 </script>
