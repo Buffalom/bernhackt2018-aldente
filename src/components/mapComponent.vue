@@ -35,6 +35,12 @@ export default {
           name: "Haltestellen (Bis 500 Meter)",
           active: false,
           features: this.$store.getters.stops
+        },
+        {
+          id: 1,
+          name: "Fahrzeuge",
+          active: false,
+          features: this.$store.getters.vehicles
         }
       ]
     };
@@ -68,15 +74,15 @@ export default {
     },
     locateCenter() {
       if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.center.lat = position.coords.latitude;
-        this.center.lng = position.coords.longitude;
-        this.map.setView([this.center.lat, this.center.lng]);
-        console.log(position.coords);
-        let yourPosMarker = L.circle([ position.coords.latitude, position.coords.longitude ], { radius: 20 }).bindPopup('Your position')
-        yourPosMarker.addTo(this.map);
-      });
-    }
+        navigator.geolocation.getCurrentPosition(position => {
+          this.center.lat = position.coords.latitude;
+          this.center.lng = position.coords.longitude;
+          this.map.setView([this.center.lat, this.center.lng]);
+          console.log(position.coords);
+          let yourPosMarker = L.circle([ position.coords.latitude, position.coords.longitude ], { radius: 20 }).bindPopup('Your position')
+          yourPosMarker.addTo(this.map);
+        });
+      }
     }
   }
 };

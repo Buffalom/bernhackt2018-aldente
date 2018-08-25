@@ -27,6 +27,7 @@ export default {
           this.$store.dispatch("fetchStops", options);
       });
     }
+    this.$store.dispatch("fetchVehicles");
     this.$store.dispatch("fetchAchievements");
   }
 };
