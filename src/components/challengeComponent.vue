@@ -1,6 +1,23 @@
 <template>
     <div>
-      <div class="card m-2">
+      <!-- CHECKBOXES FOR FILTER -->
+      <div class="my-2">
+        <div class="custom-control custom-checkbox custom-control-inline">
+          <input checked type="checkbox" class="custom-control-input" id="customCheck1" v-model="checkedBox1">
+          <label class="custom-control-label" for="customCheck1">offen</label>
+        </div>
+        <div class="custom-control custom-checkbox custom-control-inline">
+          <input checked type="checkbox" class="custom-control-input" id="customCheck2" v-model="ongoing">
+          <label class="custom-control-label" for="customCheck2">am Laufen</label>
+        </div>
+        <div class="custom-control custom-checkbox custom-control-inline">
+          <input checked type="checkbox" class="custom-control-input" id="customCheck3" v-model="done">
+          <label class="custom-control-label" for="customCheck3">abgeschlossen</label>
+        </div>
+      </div>
+
+      <!-- OPEN CHALLENGES -->
+      <div class="card m-2" v-if="checkedBox1">
         <div class="card-body">
           <h5 @click="description = !description" class="card-title">Ostkürvler Challenge</h5>
           <p v-show="description" class="card-text">Fahre innerhalb von 7 Tagen 5 Mal mit dem YB-Tram. <br>
@@ -15,7 +32,7 @@
         </div>
       </div>
 
-      <div class="card m-2">
+      <div class="card m-2" v-if="checkedBox1">
         <div class="card-body">
           <h5 @click="description2 = !description2" class="card-title">Westside Challenge</h5>
           <p v-show="description2" class="card-text">Fahre vom Bahnhof mit der Line 8 zur Westside.<br>
@@ -29,7 +46,8 @@
         </div>
       </div>
 
-      <div class="card m-2">
+      <!-- ONGOING CHALLENGES -->
+      <div class="card m-2" v-if="ongoing">
         <div class="card-body">
           <h5 @click="description3 = !description3" class="card-title">1 Mio Meter Challenge</h5>
           <p v-show="description3" class="card-text">Fahre 1000km im Berner öV Netz. <br>
@@ -43,6 +61,7 @@
         </div>
       </div>
 
+      <!-- MODAL FOR CANCELING -->
       <div class="modal" id="cancelModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -65,7 +84,8 @@
         </div>
       </div>
 
-      <div class="card m-2">
+      <!-- DONE CHALLENGES -->
+      <div class="card m-2" v-if="done">
         <div class="card-body">
           <h5 @click="description4 = !description4" class="card-title"><del>Dampftram Challenge</del></h5>
           <p v-show="description4" class="card-text"><del>Fahre mindestens eine Stunde im Dampftram. </del><br>
@@ -75,6 +95,7 @@
         </div>
       </div>
 
+      <!-- MODAL FOR DONE -> RESULT -->
       <div class="modal" id="resultModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -129,6 +150,9 @@ export default {
       description2: false,
       description3: false,
       description4: false,
+      checkedBox1: true,
+      ongoing: false,
+      done: false
     }
   },
   methods: {
