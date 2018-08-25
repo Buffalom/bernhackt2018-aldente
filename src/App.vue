@@ -2,7 +2,6 @@
   <div id="app">
     <header-component/>
     <router-view></router-view>
-    <footer-component/>
   </div>
 </template>
 
