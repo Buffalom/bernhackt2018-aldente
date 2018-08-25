@@ -19,15 +19,17 @@ export default {
 }
 </script>
 
-<style>
+<style lang='scss'>
 body {
     padding: 0;
     margin: 0;
 }
+
 html, body, #map {
     height: 100%;
     width: 100vw;
 }
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -36,14 +38,4 @@ html, body, #map {
   color: #2c3e50;
   margin-top: 60px;
 }
-
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 5px;
-    width: 100%;
-    text-align: center;
-}
-
-@import "assets/style/main"
 </style>

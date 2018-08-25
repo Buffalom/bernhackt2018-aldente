@@ -16,4 +16,12 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
+}
+</style>
