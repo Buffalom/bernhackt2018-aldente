@@ -8,11 +8,15 @@ export default new Vuex.Store({
   state: {
     stops: [],
     vehicles: [],
-    achievements: []
+    achievements: [],
+    closestStop: {}
   },
   mutations: {
     addStop (state, stop) {
       state.stops.push(stop)
+    },
+    setClosestStop(state, stop) {
+      state.closestStop = stop;
     },
     addVehicle (state, vehicle) {
       state.vehicles.push(vehicle)
@@ -31,6 +35,19 @@ export default new Vuex.Store({
             context.commit('addStop', stop)
           })
         })
+    },
+    fetchClosestStop (context, options) {
+      return new Promise((resolve, reject) => {
+        axios.get(`http://localhost:3000/stops?lat=${options.lat}&lon=${options.lon}`)
+          .then(response => {
+            response.data.stops.forEach(stop => {
+              stop.type = 'marker'
+              stop.leafletObject = L.marker([ stop.latitude, stop.longitude ]).bindPopup(stop.name)
+              context.commit('setClosestStop', stop)
+              resolve(stop)
+            })
+          })
+      })
     },
     fetchVehicles (context, options) {
       axios.get(`http://localhost:3000/vehicles?lat=${options.lat}&lon=${options.lon}&rad=${options.rad}`)
@@ -63,6 +80,7 @@ export default new Vuex.Store({
   getters: {
     stops: state => state.stops,
     vehicles: state => state.vehicles,
-    achievements: state => state.achievements
+    achievements: state => state.achievements,
+    closestStop: state => state.closestStop
   }
 })

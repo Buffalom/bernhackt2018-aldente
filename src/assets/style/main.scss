@@ -1,5 +1,5 @@
 @import "variables";
-@import url('https://fonts.googleapis.com/css?family=Istok+Web:700');
+@import url('https://fonts.googleapis.com/css?family=Istok+Web:400,700');
 
 #app {
     font-family: 'Istok Web', Helvetica, Arial, sans-serif;
@@ -7,7 +7,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: $text-dark;
-
+    font-weight: 700;
     margin-top: 54px;
 }
 
