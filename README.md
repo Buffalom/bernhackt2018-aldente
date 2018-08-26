@@ -7,7 +7,7 @@
 
 ## Projektinformationen
 
-Präsentation, Technische Dokumentation, Mockups und weitere Materialien sind unter `bernhackt_team_material` zu finden.
+Präsentation, Technische Dokumentation, Mockups, das Demo Video und weitere Materialien sind unter `bernhackt_team_material` zu finden.
 
 In diesem Repo findet sich nur das Frontend der App. Das Backend ist in [seinem eigenen Repository](https://github.com/Andy-Bigler/bernhackt2018-aldente-backend).
 
