@@ -1,9 +1,9 @@
 <template>
   <div>
     <nav v-click-outside="collapseNav" class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+        <router-link class="navbar-brand" tag="a" to="/">
             <img src="../assets/img/bernmobil_logo.png">
-        </a>
+        </router-link>
 
         <button @click="showNav = !showNav" class="navbar-toggler ml-auto" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
